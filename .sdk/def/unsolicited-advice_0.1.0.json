@@ -1,0 +1,148 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Unsolicited Advice API",
+    "description": "This API provides access to a collection of unsolicited advice from Kevin Kelly. Users can retrieve random advice, all available advice, or specific advice based on its ID.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://kk-advice.koyeb.app/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://kk-advice.koyeb.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/advice": {
+      "get": {
+        "summary": "Get random advice",
+        "description": "Returns a single random piece of unsolicited advice from Kevin Kelly",
+        "operationId": "getRandomAdvice",
+        "responses": {
+          "200": {
+            "description": "Successful response with random advice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Advice"
+                },
+                "example": {
+                  "id": 7,
+                  "advice": "Gratitude will unlock all other virtues and is something you can get better at.",
+                  "source": "https://kk.org/thetechnium/68-bits-of-unsolicited-advice/"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/advice/all": {
+      "get": {
+        "summary": "Get all advice",
+        "description": "Returns all available pieces of unsolicited advice from Kevin Kelly",
+        "operationId": "getAllAdvice",
+        "responses": {
+          "200": {
+            "description": "Successful response with all advice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Advice"
+                  }
+                },
+                "example": [
+                  {
+                    "id": 1,
+                    "advice": "Example advice here.",
+                    "source": "https://kk.org/thetechnium/68-bits-of-unsolicited-advice/"
+                  },
+                  {
+                    "id": 2,
+                    "advice": "Another example advice.",
+                    "source": "https://kk.org/thetechnium/68-bits-of-unsolicited-advice/"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/advice/{id}": {
+      "get": {
+        "summary": "Get specific advice by ID",
+        "description": "Returns a specific piece of unsolicited advice based on the provided ID (valid range: 1 to 371)",
+        "operationId": "getAdviceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the advice to retrieve (1 to 371)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 371
+            },
+            "example": 7
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with specific advice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Advice"
+                },
+                "example": {
+                  "id": 7,
+                  "advice": "Gratitude will unlock all other virtues and is something you can get better at.",
+                  "source": "https://kk.org/thetechnium/68-bits-of-unsolicited-advice/"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Advice with the specified ID not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Advice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier for the advice",
+            "example": 7
+          },
+          "advice": {
+            "type": "string",
+            "description": "The unsolicited advice text from Kevin Kelly",
+            "example": "Gratitude will unlock all other virtues and is something you can get better at."
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL source of the advice",
+            "example": "https://kk.org/thetechnium/68-bits-of-unsolicited-advice/"
+          }
+        },
+        "required": [
+          "id",
+          "advice",
+          "source"
+        ]
+      }
+    }
+  }
+}

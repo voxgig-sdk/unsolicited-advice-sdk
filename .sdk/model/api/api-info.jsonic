@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://kk-advice.koyeb.app/api"
+      }
+      description: "This API provides access to a collection of unsolicited advice from Kevin Kelly. Users can retrieve random advice, all available advice, or specific advice based on its ID."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://kk-advice.koyeb.app"
+        }
+      ]
+      title: "Unsolicited Advice API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

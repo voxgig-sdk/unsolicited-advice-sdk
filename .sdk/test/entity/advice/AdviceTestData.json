@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "advice": {
+      "ADVICE00": {
+        "advice": "s1e",
+        "id": "ADVICE00",
+        "source": "s20"
+      },
+      "ADVICE01": {
+        "advice": "s3c",
+        "id": "ADVICE01",
+        "source": "s3e"
+      },
+      "ADVICE02": {
+        "advice": "s5a",
+        "id": "ADVICE02",
+        "source": "s5c"
+      }
+    }
+  },
+  "new": {
+    "advice": {
+      "advice_ref01": {
+        "advice": "s78",
+        "source": "s7a"
+      }
+    }
+  }
+}
