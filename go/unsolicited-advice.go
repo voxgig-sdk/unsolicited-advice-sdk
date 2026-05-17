@@ -1,10 +1,10 @@
 package voxgigunsolicitedadvicesdk
 
 import (
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/core"
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/entity"
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/feature"
-	_ "github.com/voxgig-sdk/unsolicited-advice-sdk/utility"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/core"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/entity"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/feature"
+	_ "github.com/voxgig-sdk/unsolicited-advice-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

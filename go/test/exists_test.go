@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/unsolicited-advice-sdk"
+	sdk "github.com/voxgig-sdk/unsolicited-advice-sdk/go"
 )
 
 func TestExists(t *testing.T) {

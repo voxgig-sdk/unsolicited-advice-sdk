@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/core"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/core"
 )
 
 type BaseFeature struct {

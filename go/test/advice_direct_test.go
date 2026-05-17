@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/unsolicited-advice-sdk"
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/core"
+	sdk "github.com/voxgig-sdk/unsolicited-advice-sdk/go"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/core"
 )
 
 func TestAdviceDirect(t *testing.T) {

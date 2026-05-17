@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/unsolicited-advice-sdk/core"
+	"github.com/voxgig-sdk/unsolicited-advice-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/unsolicited-advice-sdk/go/utility/struct"
 )
 
 type AdviceEntity struct {
