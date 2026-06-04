@@ -20,9 +20,6 @@ class UnsolicitedAdviceConfig
             ],
             "options" => [
                 "base" => "https://kk-advice.koyeb.app",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "UnsolicitedAdvice_sdk"
 
-client = UnsolicitedAdviceSDK.new({
-  "apikey" => ENV["UNSOLICITED-ADVICE_APIKEY"],
-})
+client = UnsolicitedAdviceSDK.new({})
 ```
 
 ### 2. List advices
@@ -135,7 +133,6 @@ Create a `.env.local` file at the project root:
 
 ```
 UNSOLICITED-ADVICE_TEST_LIVE=TRUE
-UNSOLICITED-ADVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -158,7 +155,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

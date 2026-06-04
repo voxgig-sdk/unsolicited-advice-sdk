@@ -115,14 +115,12 @@ function advice_direct_setup(mockres)
   local env = runner.env_override({
     ["UNSOLICITEDADVICE_TEST_ADVICE_ENTID"] = {},
     ["UNSOLICITEDADVICE_TEST_LIVE"] = "FALSE",
-    ["UNSOLICITEDADVICE_APIKEY"] = "NONE",
   })
 
   local live = env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["UNSOLICITEDADVICE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
