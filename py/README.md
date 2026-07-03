@@ -10,7 +10,7 @@ The Python SDK for the UnsolicitedAdvice API — an entity-oriented client follo
 
 ## Install
 ```bash
-pip install unsolicited-advice-sdk
+pip install voxgig-sdk-unsolicited-advice
 ```
 
 Or install from source:

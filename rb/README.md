@@ -10,13 +10,13 @@ The Ruby SDK for the UnsolicitedAdvice API — an entity-oriented client using i
 
 ## Install
 ```bash
-gem install unsolicited-advice-sdk
+gem install voxgig-sdk-unsolicited-advice
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "unsolicited-advice-sdk"
+gem "voxgig-sdk-unsolicited-advice"
 ```
 
 Then run:

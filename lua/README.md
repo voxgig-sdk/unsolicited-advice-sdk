@@ -10,7 +10,7 @@ The Lua SDK for the UnsolicitedAdvice API — an entity-oriented client using Lu
 
 ## Install
 ```bash
-luarocks install unsolicited-advice-sdk
+luarocks install voxgig-sdk-unsolicited-advice
 ```
 
 If the module is not yet published, add the source directory to

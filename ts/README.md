@@ -10,7 +10,7 @@ The TypeScript SDK for the UnsolicitedAdvice API — a type-safe, entity-oriente
 
 ## Install
 ```bash
-npm install unsolicited-advice
+npm install @voxgig-sdk/unsolicited-advice
 ```
 ## Tutorial: your first API call
 

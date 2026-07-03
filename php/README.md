@@ -10,7 +10,7 @@ The PHP SDK for the UnsolicitedAdvice API — an entity-oriented client using PH
 
 ## Install
 ```bash
-composer require voxgig/unsolicited-advice-sdk
+composer require voxgig-sdk/unsolicited-advice
 ```
 
 
