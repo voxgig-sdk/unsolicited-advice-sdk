@@ -1,6 +1,11 @@
 # UnsolicitedAdvice Python SDK
 
-The Python SDK for the UnsolicitedAdvice API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the UnsolicitedAdvice API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from unsolicitedadvice_sdk import UnsolicitedAdviceSDK
 
-client = UnsolicitedAdviceSDK({})
+client = UnsolicitedAdviceSDK({
+    "apikey": os.environ.get("UNSOLICITED-ADVICE_APIKEY"),
+})
 ```
 
 ### 2. List advices
 
 ```python
-result, err = client.Advice(None).list(None, None)
+result, err = client.Advice().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a advice
 
 ```python
-result, err = client.Advice(None).load({"id": "example_id"}, None)
+result, err = client.Advice().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = UnsolicitedAdviceSDK.test(None, None)
+client = UnsolicitedAdviceSDK.test()
 
-result, err = client.UnsolicitedAdvice(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.UnsolicitedAdvice().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 UNSOLICITED-ADVICE_TEST_LIVE=TRUE
+UNSOLICITED-ADVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

@@ -16,28 +16,7 @@ main: {
       ]
       title: "Unsolicited Advice API"
       version: "1.0.0"
-      tagline: "Fetch pieces of Kevin Kelly's unsolicited advice, randomly or by ID"
-      homepage: "https://kk-advice.koyeb.app"
-      docs_url: "https://kk-advice.koyeb.app/api"
-      license_short: "No explicit licence; advice text is attributed to Kevin Kelly's writing on The Technium."
-      license_md: `- No licence is published on the API or its documentation page.
-- Advice text originates from Kevin Kelly's essays (notably [68 Bits of Unsolicited Advice](https://kk.org/thetechnium/68-bits-of-unsolicited-advice/)) on [The Technium](https://kk.org/thetechnium/).
-- Responses include a \`source\` URL pointing back to the original publication — preserve that attribution if you redisplay the text.
-- Treat the corpus as third-party content: check with the original author before commercial reuse.`
-      about_md: `The Unsolicited Advice API serves short pieces of life advice written by [Kevin Kelly](https://kk.org/), founding editor of Wired and author of *The Technium*. The service is hosted at [kk-advice.koyeb.app](https://kk-advice.koyeb.app) and exposes a small JSON API over the curated collection.
-
-What you get from the API:
-
-- \`GET /api/advice\` — a random advice entry
-- \`GET /api/advice/all\` — the complete collection
-- \`GET /api/advice/:id\` — a specific entry (IDs roughly 1–371)
-- Each response is a JSON object with \`id\` (number), \`advice\` (text) and \`source\` (URL back to Kevin Kelly's original post).
-
-Operational notes: no authentication is required and no rate limits are published. CORS is disabled, so browser-side calls from another origin will need a proxy. Typical response time observed by the community catalogue is on the order of a few seconds.`
-      entity_desc: {
-        advice: "A single piece of advice with `id`, `advice` text and a `source` URL; served from `GET /api/advice` (random), `GET /api/advice/all` (full list) and `GET /api/advice/:id` (specific entry)."
-      }
-      auth: false
     }
   }
 }
+

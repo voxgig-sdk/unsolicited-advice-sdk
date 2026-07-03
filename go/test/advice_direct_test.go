@@ -175,12 +175,14 @@ func adviceDirectSetup(mockres any) *adviceDirectSetupResult {
 	env := envOverride(map[string]any{
 		"UNSOLICITEDADVICE_TEST_ADVICE_ENTID": map[string]any{},
 		"UNSOLICITEDADVICE_TEST_LIVE":    "FALSE",
+		"UNSOLICITEDADVICE_APIKEY":       "NONE",
 	})
 
 	live := env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["UNSOLICITEDADVICE_APIKEY"],
 		}
 		client := sdk.NewUnsolicitedAdviceSDK(mergedOpts)
 

@@ -117,12 +117,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'UNSOLICITEDADVICE_TEST_ADVICE_ENTID': {},
     'UNSOLICITEDADVICE_TEST_LIVE': 'FALSE',
+    'UNSOLICITEDADVICE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.UNSOLICITEDADVICE_TEST_LIVE
 
   if (live) {
     const client = new UnsolicitedAdviceSDK({
+      apikey: env.UNSOLICITEDADVICE_APIKEY,
     })
 
     let idmap: any = env['UNSOLICITEDADVICE_TEST_ADVICE_ENTID']

@@ -102,6 +102,7 @@ def _advice_basic_setup(extra):
         "UNSOLICITEDADVICE_TEST_ADVICE_ENTID": idmap,
         "UNSOLICITEDADVICE_TEST_LIVE": "FALSE",
         "UNSOLICITEDADVICE_TEST_EXPLAIN": "FALSE",
+        "UNSOLICITEDADVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _advice_basic_setup(extra):
     if env.get("UNSOLICITEDADVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("UNSOLICITEDADVICE_APIKEY"),
             },
             extra or {},
         ])

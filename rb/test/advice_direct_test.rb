@@ -114,12 +114,14 @@ def advice_direct_setup(mockres)
   env = Runner.env_override({
     "UNSOLICITEDADVICE_TEST_ADVICE_ENTID" => {},
     "UNSOLICITEDADVICE_TEST_LIVE" => "FALSE",
+    "UNSOLICITEDADVICE_APIKEY" => "NONE",
   })
 
   live = env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["UNSOLICITEDADVICE_APIKEY"],
     }
     client = UnsolicitedAdviceSDK.new(merged_opts)
     return {

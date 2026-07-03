@@ -1,21 +1,8 @@
 # UnsolicitedAdvice SDK
 
-Fetch pieces of Kevin Kelly's unsolicited advice, randomly or by ID
+Unsolicited Advice API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Unsolicited Advice API
-
-The Unsolicited Advice API serves short pieces of life advice written by [Kevin Kelly](https://kk.org/), founding editor of Wired and author of *The Technium*. The service is hosted at [kk-advice.koyeb.app](https://kk-advice.koyeb.app) and exposes a small JSON API over the curated collection.
-
-What you get from the API:
-
-- `GET /api/advice` — a random advice entry
-- `GET /api/advice/all` — the complete collection
-- `GET /api/advice/:id` — a specific entry (IDs roughly 1–371)
-- Each response is a JSON object with `id` (number), `advice` (text) and `source` (URL back to Kevin Kelly's original post).
-
-Operational notes: no authentication is required and no rate limits are published. CORS is disabled, so browser-side calls from another origin will need a proxy. Typical response time observed by the community catalogue is on the order of a few seconds.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install unsolicited-advice-sdk
 luarocks install unsolicited-advice-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { UnsolicitedAdviceSDK } from 'unsolicited-advice'
 
-const client = new UnsolicitedAdviceSDK({})
+const client = new UnsolicitedAdviceSDK({
+  apikey: process.env.UNSOLICITED-ADVICE_APIKEY,
+})
 
 // List all advices
 const advices = await client.Advice().list()
+console.log(advices.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Advice** | A single piece of advice with `id`, `advice` text and a `source` URL; served from `GET /api/advice` (random), `GET /api/advice/all` (full list) and `GET /api/advice/:id` (specific entry). | `/api/advice/all` |
+| **Advice** |  | `/api/advice/all` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from unsolicitedadvice_sdk import UnsolicitedAdviceSDK
 
-client = UnsolicitedAdviceSDK({})
+client = UnsolicitedAdviceSDK({
+    "apikey": os.environ.get("UNSOLICITED-ADVICE_APIKEY"),
+})
 
 # List all advices
-advices, err = client.Advice(None).list(None, None)
+advices, err = client.Advice().list()
+print(advices)
 
 # Load a specific advice
-advice, err = client.Advice(None).load(
-    {"id": "example_id"}, None
-)
+advice, err = client.Advice().load({"id": "example_id"})
+print(advice)
 ```
 
 ### PHP
@@ -130,15 +122,17 @@ advice, err = client.Advice(None).load(
 <?php
 require_once 'unsolicitedadvice_sdk.php';
 
-$client = new UnsolicitedAdviceSDK([]);
+$client = new UnsolicitedAdviceSDK([
+    "apikey" => getenv("UNSOLICITED-ADVICE_APIKEY"),
+]);
 
 // List all advices
-[$advices, $err] = $client->Advice(null)->list(null, null);
+[$advices, $err] = $client->Advice()->list();
+print_r($advices);
 
 // Load a specific advice
-[$advice, $err] = $client->Advice(null)->load(
-    ["id" => "example_id"], null
-);
+[$advice, $err] = $client->Advice()->load(["id" => "example_id"]);
+print_r($advice);
 ```
 
 ### Golang
@@ -146,10 +140,13 @@ $client = new UnsolicitedAdviceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/unsolicited-advice-sdk/go"
 
-client := sdk.NewUnsolicitedAdviceSDK(map[string]any{})
+client := sdk.NewUnsolicitedAdviceSDK(map[string]any{
+    "apikey": os.Getenv("UNSOLICITED-ADVICE_APIKEY"),
+})
 
 // List all advices
 advices, err := client.Advice(nil).List(nil, nil)
+fmt.Println(advices)
 ```
 
 ### Ruby
@@ -157,15 +154,17 @@ advices, err := client.Advice(nil).List(nil, nil)
 ```ruby
 require_relative "UnsolicitedAdvice_sdk"
 
-client = UnsolicitedAdviceSDK.new({})
+client = UnsolicitedAdviceSDK.new({
+  "apikey" => ENV["UNSOLICITED-ADVICE_APIKEY"],
+})
 
 # List all advices
-advices, err = client.Advice(nil).list(nil, nil)
+advices, err = client.Advice().list
+puts advices
 
 # Load a specific advice
-advice, err = client.Advice(nil).load(
-  { "id" => "example_id" }, nil
-)
+advice, err = client.Advice().load({ "id" => "example_id" })
+puts advice
 ```
 
 ### Lua
@@ -173,15 +172,17 @@ advice, err = client.Advice(nil).load(
 ```lua
 local sdk = require("unsolicited-advice_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("UNSOLICITED-ADVICE_APIKEY"),
+})
 
 -- List all advices
-local advices, err = client:Advice(nil):list(nil, nil)
+local advices, err = client:Advice():list()
+print(advices)
 
 -- Load a specific advice
-local advice, err = client:Advice(nil):load(
-  { id = "example_id" }, nil
-)
+local advice, err = client:Advice():load({ id = "example_id" })
+print(advice)
 ```
 
 ## Unit testing in offline mode
@@ -200,25 +201,21 @@ const result = await client.Advice().load({ id: 'test01' })
 ### Python
 
 ```python
-client = UnsolicitedAdviceSDK.test(None, None)
-result, err = client.Advice(None).load(
-    {"id": "test01"}, None
-)
+client = UnsolicitedAdviceSDK.test()
+result, err = client.Advice().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = UnsolicitedAdviceSDK::test(null, null);
-[$result, $err] = $client->Advice(null)->load(
-    ["id" => "test01"], null
-);
+$client = UnsolicitedAdviceSDK::test();
+[$result, $err] = $client->Advice()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Advice(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -227,19 +224,15 @@ result, err := client.Advice(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnsolicitedAdviceSDK.test(nil, nil)
-result, err = client.Advice(nil).load(
-  { "id" => "test01" }, nil
-)
+client = UnsolicitedAdviceSDK.test
+result, err = client.Advice().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Advice(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Advice():load({ id = "test01" })
 ```
 
 ## How it works
@@ -343,16 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Unsolicited Advice API
-
-- Upstream: [https://kk-advice.koyeb.app](https://kk-advice.koyeb.app)
-- API docs: [https://kk-advice.koyeb.app/api](https://kk-advice.koyeb.app/api)
-
-- No licence is published on the API or its documentation page.
-- Advice text originates from Kevin Kelly's essays (notably [68 Bits of Unsolicited Advice](https://kk.org/thetechnium/68-bits-of-unsolicited-advice/)) on [The Technium](https://kk.org/thetechnium/).
-- Responses include a `source` URL pointing back to the original publication — preserve that attribution if you redisplay the text.
-- Treat the corpus as third-party content: check with the original author before commercial reuse.
 
 ---
 
