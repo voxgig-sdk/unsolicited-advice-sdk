@@ -204,14 +204,7 @@ class UnsolicitedAdviceSDK {
 
 
 
-  _advice?: AdviceEntity
-
-  // Idiomatic facade: `client.advice.list()` / `client.advice.load({ id })`.
-  get advice(): AdviceEntity {
-    return (this._advice ??= new AdviceEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.advice` instead. */
+  // Entity access: `client.Advice().list()` / `client.Advice().load({ id })`.
   Advice(data?: any) {
     const self = this
     return new AdviceEntity(self,data)

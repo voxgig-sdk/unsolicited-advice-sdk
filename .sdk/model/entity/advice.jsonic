@@ -80,7 +80,7 @@ main: kit: entity: advice: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.advice`"
+            res: "`body`"
           }
         }
         {
@@ -92,7 +92,7 @@ main: kit: entity: advice: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body.advice`"
+            res: "`body`"
           }
         }
       ]

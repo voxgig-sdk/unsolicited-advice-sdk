@@ -26,9 +26,11 @@ import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice'
 
 const client = new UnsolicitedAdviceSDK()
 
-// List all advices
-const advices = await client.advice.list()
-console.log(advices.data)
+// List all advices (returns Advice[])
+const advices = await client.Advice().list()
+for (const advice of advices) {
+  console.log(advice)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,12 +85,13 @@ from unsolicitedadvice_sdk import UnsolicitedAdviceSDK
 
 client = UnsolicitedAdviceSDK()
 
-# List all advices
-advices = client.advice.list()
-print(advices)
+# List all advices (returns a list, raises on error)
+advices = client.Advice().list({})
+for advice in advices:
+    print(advice)
 
-# Load a specific advice
-advice = client.advice.load({"id": "example_id"})
+# Load a specific advice (returns the record, raises on error)
+advice = client.Advice().load({"id": "example_id"})
 print(advice)
 ```
 
@@ -100,12 +103,12 @@ require_once 'unsolicitedadvice_sdk.php';
 
 $client = new UnsolicitedAdviceSDK();
 
-// List all advices (throws on error)
-$advices = $client->advice()->list();
+// List all advices (returns an array; throws on error)
+$advices = $client->Advice()->list();
 print_r($advices);
 
-// Load a specific advice
-$advice = $client->advice()->load(["id" => "example_id"]);
+// Load a specific advice (returns the bare record; throws on error)
+$advice = $client->Advice()->load(["id" => "example_id"]);
 print_r($advice);
 ```
 
@@ -128,12 +131,12 @@ require_relative "UnsolicitedAdvice_sdk"
 
 client = UnsolicitedAdviceSDK.new
 
-# List all advices
-advices = client.advice.list
+# List all advices (returns an Array; raises on error)
+advices = client.Advice.list
 puts advices
 
-# Load a specific advice
-advice = client.advice.load({ "id" => "example_id" })
+# Load a specific advice (returns the bare record; raises on error)
+advice = client.Advice.load({ "id" => "example_id" })
 puts advice
 ```
 
@@ -145,11 +148,11 @@ local sdk = require("unsolicited-advice_sdk")
 local client = sdk.new()
 
 -- List all advices
-local advices, err = client:advice():list()
+local advices, err = client:Advice():list()
 print(advices)
 
 -- Load a specific advice
-local advice, err = client:advice():load({ id = "example_id" })
+local advice, err = client:Advice():load({ id = "example_id" })
 print(advice)
 ```
 
@@ -162,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = UnsolicitedAdviceSDK.test()
-const result = await client.advice.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const advice = await client.Advice().load({ id: 1 })
+// advice is a bare Advice populated with mock data
+console.log(advice)
 ```
 
 ### Python
 
 ```python
 client = UnsolicitedAdviceSDK.test()
-result = client.advice.load({"id": "test01"})
+advice = client.Advice().load({"id": "test01"})
+print(advice)
 ```
 
 ### PHP
 
 ```php
-$client = UnsolicitedAdviceSDK::test();
-$result = $client->advice()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = UnsolicitedAdviceSDK::test([
+    "entity" => ["advice" => ["test01" => ["id" => "test01"]]],
+]);
+$advice = $client->Advice()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -192,15 +200,18 @@ result, err := client.Advice(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnsolicitedAdviceSDK.test
-result = client.advice.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = UnsolicitedAdviceSDK.test({
+  "entity" => { "advice" => { "test01" => { "id" => "test01" } } },
+})
+advice = client.Advice.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:advice():load({ id = "test01" })
+local result, err = client:Advice():load({ id = "test01" })
 ```
 
 ## How it works
@@ -248,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

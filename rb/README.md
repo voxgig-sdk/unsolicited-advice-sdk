@@ -28,16 +28,14 @@ require_relative "UnsolicitedAdvice_sdk"
 client = UnsolicitedAdviceSDK.new
 ```
 
-### 2. List advices
+### 2. List advice records
 
 ```ruby
 begin
-  result = client.advice.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Advice records — iterate directly.
+  advices = client.Advice.list
+  advices.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.advice.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Advice record (raises on error).
+  advice = client.Advice.load({ "id" => "example_id" })
+  puts advice
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = UnsolicitedAdviceSDK.test
+client = UnsolicitedAdviceSDK.test({
+  "entity" => { "advice" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.advice.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+advice = client.Advice.load({ "id" => "test01" })
+puts advice
 ```
 
 ### Use a custom fetch function
@@ -178,7 +181,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Advice` | `(data) -> AdviceEntity` | Create a Advice entity instance. |
+| `Advice` | `(data) -> AdviceEntity` | Create an Advice entity instance. |
 
 ### Entity interface
 
@@ -236,7 +239,7 @@ API path: `/api/advice/all`
 
 ### Advice
 
-Create an instance: `const advice = client.advice`
+Create an instance: `advice = client.Advice`
 
 #### Operations
 
@@ -255,14 +258,16 @@ Create an instance: `const advice = client.advice`
 
 #### Example: Load
 
-```ts
-const advice = await client.advice.load({ id: 'advice_id' })
+```ruby
+# load returns the bare Advice record (raises on error).
+advice = client.Advice.load({ "id" => "advice_id" })
 ```
 
 #### Example: List
 
-```ts
-const advices = await client.advice.list()
+```ruby
+# list returns an Array of Advice records (raises on error).
+advices = client.Advice.list
 ```
 
 
@@ -337,7 +342,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-advice = client.advice
+advice = client.Advice
 advice.load({ "id" => "example_id" })
 
 # advice.data_get now returns the loaded advice data

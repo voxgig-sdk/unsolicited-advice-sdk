@@ -29,18 +29,16 @@ require_once 'unsolicitedadvice_sdk.php';
 $client = new UnsolicitedAdviceSDK();
 ```
 
-### 2. List advices
+### 2. List advice records
 
 ```php
 try {
-    $result = $client->advice()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Advice records — iterate directly.
+    $advices = $client->Advice()->list();
+    foreach ($advices as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->advice()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Advice record (throws on error).
+    $advice = $client->Advice()->load(["id" => "example_id"]);
+    print_r($advice);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = UnsolicitedAdviceSDK::test();
+$client = UnsolicitedAdviceSDK::test([
+    "entity" => ["advice" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->advice()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$advice = $client->Advice()->load(["id" => "test01"]);
+print_r($advice);
 ```
 
 ### Use a custom fetch function
@@ -182,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Advice` | `($data): AdviceEntity` | Create a Advice entity instance. |
+| `Advice` | `($data): AdviceEntity` | Create an Advice entity instance. |
 
 ### Entity interface
 
@@ -241,7 +244,7 @@ API path: `/api/advice/all`
 
 ### Advice
 
-Create an instance: `const advice = client.advice`
+Create an instance: `$advice = $client->Advice();`
 
 #### Operations
 
@@ -260,14 +263,16 @@ Create an instance: `const advice = client.advice`
 
 #### Example: Load
 
-```ts
-const advice = await client.advice.load({ id: 'advice_id' })
+```php
+// load() returns the bare Advice record (throws on error).
+$advice = $client->Advice()->load(["id" => "advice_id"]);
 ```
 
 #### Example: List
 
-```ts
-const advices = await client.advice.list()
+```php
+// list() returns an array of Advice records (throws on error).
+$advices = $client->Advice()->list();
 ```
 
 
@@ -342,7 +347,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$advice = $client->advice();
+$advice = $client->Advice();
 $advice->load(["id" => "example_id"]);
 
 // $advice->dataGet() now returns the loaded advice data

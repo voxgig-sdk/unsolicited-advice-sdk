@@ -220,25 +220,15 @@ class UnsolicitedAdviceSDK:
         }
 
 
-    @property
-    def advice(self):
-        """Idiomatic facade: client.advice.list() / client.advice.load({"id": ...})."""
-        from entity.advice_entity import AdviceEntity
-        cached = getattr(self, "_advice", None)
-        if cached is None:
-            cached = AdviceEntity(self, None)
-            self._advice = cached
-        return cached
-
-    def Advice(self, data=None):
-        # Deprecated: use client.advice instead.
+    def Advice(self, data=None) -> "AdviceEntity":
+        """Entity factory: client.Advice().list({}) / client.Advice().load({"id": ...})."""
         from entity.advice_entity import AdviceEntity
         return AdviceEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "UnsolicitedAdviceSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class UnsolicitedAdviceSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.advice_entity import AdviceEntity

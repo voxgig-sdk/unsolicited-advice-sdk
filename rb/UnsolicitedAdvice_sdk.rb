@@ -208,13 +208,7 @@ class UnsolicitedAdviceSDK
   end
 
 
-  # Idiomatic facade: client.advice.list / client.advice.load({ "id" => ... })
-  def advice
-    require_relative 'entity/advice_entity'
-    @advice ||= AdviceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.advice instead.
+  # Canonical facade: client.Advice.list / client.Advice.load({ "id" => ... })
   def Advice(data = nil)
     require_relative 'entity/advice_entity'
     AdviceEntity.new(self, data)

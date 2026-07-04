@@ -109,7 +109,7 @@ module UnsolicitedAdviceConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.advice`",
+                    "res" => "`body`",
                   },
                   "index$" => 0,
                 },
@@ -125,7 +125,7 @@ module UnsolicitedAdviceConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.advice`",
+                    "res" => "`body`",
                   },
                   "index$" => 1,
                 },

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:advice():list() / client:advice():load({ id = ... })
-function UnsolicitedAdviceSDK:advice(data)
+-- Idiomatic facade: client:Advice():list() / client:Advice():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnsolicitedAdviceSDK:Advice(data)
   local EntityMod = require("entity.advice_entity")
   if data == nil then
     if self._advice == nil then
@@ -253,12 +254,6 @@ function UnsolicitedAdviceSDK:advice(data)
     end
     return self._advice
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:advice() instead.
-function UnsolicitedAdviceSDK:Advice(data)
-  local EntityMod = require("entity.advice_entity")
   return EntityMod.new(self, data)
 end
 

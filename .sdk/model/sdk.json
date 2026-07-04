@@ -110,7 +110,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body.advice`"
+                    "res": "`body`"
                   }
                 },
                 {
@@ -125,7 +125,7 @@
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body.advice`"
+                    "res": "`body`"
                   }
                 }
               ]

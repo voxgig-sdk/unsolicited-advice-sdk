@@ -114,7 +114,7 @@ class UnsolicitedAdviceConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.advice`',
+                    'res' => '`body`',
                   ],
                   'index$' => 0,
                 ],
@@ -130,7 +130,7 @@ class UnsolicitedAdviceConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.advice`',
+                    'res' => '`body`',
                   ],
                   'index$' => 1,
                 ],

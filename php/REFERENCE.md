@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AdviceEntity
 
 ```php
-$advice = $client->advice();
+$advice = $client->Advice();
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ $advice = $client->advice();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->advice()->list([]);
+$results = $client->Advice()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -111,7 +111,7 @@ $results = $client->advice()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->advice()->load(["id" => "advice_id"]);
+$result = $client->Advice()->load(["id" => "advice_id"]);
 ```
 
 ### Common Methods

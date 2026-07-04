@@ -138,7 +138,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.advice`"
+                "res": "`body`"
               },
               "index$": 0
             },
@@ -154,7 +154,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.advice`"
+                "res": "`body`"
               },
               "index$": 1
             }

@@ -109,7 +109,7 @@ Alias for `UnsolicitedAdviceSDK.test()`.
 ## AdviceEntity
 
 ```ts
-const advice = client.advice
+const advice = client.Advice()
 ```
 
 ### Fields
@@ -127,7 +127,7 @@ const advice = client.advice
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.advice.list()
+const results = await client.Advice().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -135,7 +135,7 @@ const results = await client.advice.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.advice.load({ id: 'advice_id' })
+const result = await client.Advice().load({ id: 'advice_id' })
 ```
 
 ### Common Methods

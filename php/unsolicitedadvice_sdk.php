@@ -233,10 +233,10 @@ class UnsolicitedAdviceSDK
 
     private $_advice = null;
 
-    // Idiomatic facade: $client->advice()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Advice() (PHP method
-    // names are case-insensitive).
-    public function advice($data = null)
+    // Canonical facade: $client->Advice()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->advice()
+    // resolves here too.
+    public function Advice($data = null)
     {
         require_once __DIR__ . '/entity/advice_entity.php';
         if ($data === null) {

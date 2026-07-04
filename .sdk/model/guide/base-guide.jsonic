@@ -8,7 +8,6 @@ guide: {
   entity: advice: {
     path: "/api/advice": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.advice`")|top
     }
     path: "/api/advice/all": {
       action: "all": {}
@@ -16,7 +15,6 @@ guide: {
     }
     path: "/api/advice/{id}": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.advice`")|top
     }
   }
 

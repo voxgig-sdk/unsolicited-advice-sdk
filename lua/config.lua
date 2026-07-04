@@ -108,7 +108,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.advice`",
+                  ["res"] = "`body`",
                 },
                 ["index$"] = 0,
               },
@@ -124,7 +124,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.advice`",
+                  ["res"] = "`body`",
                 },
                 ["index$"] = 1,
               },

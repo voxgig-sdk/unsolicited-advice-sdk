@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## AdviceEntity
 
 ```lua
-local advice = client:advice(nil)
+local advice = client:Advice(nil)
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ local advice = client:advice(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:advice():list()
+local results, err = client:Advice():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -109,7 +109,7 @@ local results, err = client:advice():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:advice():load({ id = "advice_id" })
+local result, err = client:Advice():load({ id = "advice_id" })
 ```
 
 ### Common Methods
