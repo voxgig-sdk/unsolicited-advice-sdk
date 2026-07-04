@@ -15,9 +15,6 @@ module UnsolicitedAdviceConfig
       },
       "options" => {
         "base" => "https://kk-advice.koyeb.app",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -94,6 +91,7 @@ module UnsolicitedAdviceConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'UNSOLICITED_ADVICE_TEST_ADVICE_ENTID': idmap,
     'UNSOLICITED_ADVICE_TEST_LIVE': 'FALSE',
     'UNSOLICITED_ADVICE_TEST_EXPLAIN': 'FALSE',
-    'UNSOLICITED_ADVICE_APIKEY': 'NONE',
   })
 
   idmap = env['UNSOLICITED_ADVICE_TEST_ADVICE_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new UnsolicitedAdviceSDK(merge([
       {
-        apikey: env.UNSOLICITED_ADVICE_APIKEY,
       },
       extra
     ]))

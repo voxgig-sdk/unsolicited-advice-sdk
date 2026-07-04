@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:advice():list() / client:advice():load({ id = ... })
+function UnsolicitedAdviceSDK:advice(data)
+  local EntityMod = require("entity.advice_entity")
+  if data == nil then
+    if self._advice == nil then
+      self._advice = EntityMod.new(self, nil)
+    end
+    return self._advice
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:advice() instead.
 function UnsolicitedAdviceSDK:Advice(data)
   local EntityMod = require("entity.advice_entity")
   return EntityMod.new(self, data)

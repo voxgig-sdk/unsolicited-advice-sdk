@@ -245,6 +245,9 @@ func (sdk *UnsolicitedAdviceSDK) Direct(fetchargs map[string]any) (map[string]an
 }
 
 
+// Advice returns a Advice entity bound to this client.
+// Idiomatic usage: client.Advice(nil).List(nil, nil) or
+// client.Advice(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnsolicitedAdviceSDK) Advice(data map[string]any) UnsolicitedAdviceEntity {
 	return NewAdviceEntityFunc(sdk, data)
 }

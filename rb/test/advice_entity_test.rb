@@ -43,16 +43,14 @@ class AdviceEntityTest < Minitest::Test
     advice_ref01_ent = client.Advice(nil)
     advice_ref01_match = {}
 
-    advice_ref01_list_result, err = advice_ref01_ent.list(advice_ref01_match, nil)
-    assert_nil err
+    advice_ref01_list_result = advice_ref01_ent.list(advice_ref01_match, nil)
     assert advice_ref01_list_result.is_a?(Array)
 
     # LOAD
     advice_ref01_match_dt0 = {
       "id" => advice_ref01_data["id"],
     }
-    advice_ref01_data_dt0_loaded, err = advice_ref01_ent.load(advice_ref01_match_dt0, nil)
-    assert_nil err
+    advice_ref01_data_dt0_loaded = advice_ref01_ent.load(advice_ref01_match_dt0, nil)
     advice_ref01_data_dt0_load_result = Helpers.to_map(advice_ref01_data_dt0_loaded)
     assert !advice_ref01_data_dt0_load_result.nil?
     assert_equal advice_ref01_data_dt0_load_result["id"], advice_ref01_data["id"]
@@ -93,7 +91,6 @@ def advice_basic_setup(extra)
     "UNSOLICITEDADVICE_TEST_ADVICE_ENTID" => idmap,
     "UNSOLICITEDADVICE_TEST_LIVE" => "FALSE",
     "UNSOLICITEDADVICE_TEST_EXPLAIN" => "FALSE",
-    "UNSOLICITEDADVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def advice_basic_setup(extra)
   if env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["UNSOLICITEDADVICE_APIKEY"],
       },
       extra || {},
     ])

@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## AdviceEntity
 
 ```lua
-local advice = client:Advice(nil)
+local advice = client:advice(nil)
 ```
 
 ### Fields
@@ -102,7 +101,7 @@ local advice = client:Advice(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Advice():list()
+local results, err = client:advice():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -110,7 +109,7 @@ local results, err = client:Advice():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Advice():load({ id = "advice_id" })
+local result, err = client:advice():load({ id = "advice_id" })
 ```
 
 ### Common Methods

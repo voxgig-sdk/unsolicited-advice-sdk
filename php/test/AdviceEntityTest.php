@@ -50,16 +50,14 @@ class AdviceEntityTest extends TestCase
         $advice_ref01_ent = $client->Advice(null);
         $advice_ref01_match = [];
 
-        [$advice_ref01_list_result, $err] = $advice_ref01_ent->list($advice_ref01_match, null);
-        $this->assertNull($err);
+        $advice_ref01_list_result = $advice_ref01_ent->list($advice_ref01_match, null);
         $this->assertIsArray($advice_ref01_list_result);
 
         // LOAD
         $advice_ref01_match_dt0 = [
             "id" => $advice_ref01_data["id"],
         ];
-        [$advice_ref01_data_dt0_loaded, $err] = $advice_ref01_ent->load($advice_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $advice_ref01_data_dt0_loaded = $advice_ref01_ent->load($advice_ref01_match_dt0, null);
         $advice_ref01_data_dt0_load_result = Helpers::to_map($advice_ref01_data_dt0_loaded);
         $this->assertNotNull($advice_ref01_data_dt0_load_result);
         $this->assertEquals($advice_ref01_data_dt0_load_result["id"], $advice_ref01_data["id"]);
@@ -96,7 +94,6 @@ function advice_basic_setup($extra)
         "UNSOLICITEDADVICE_TEST_ADVICE_ENTID" => $idmap,
         "UNSOLICITEDADVICE_TEST_LIVE" => "FALSE",
         "UNSOLICITEDADVICE_TEST_EXPLAIN" => "FALSE",
-        "UNSOLICITEDADVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function advice_basic_setup($extra)
     if ($env["UNSOLICITEDADVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UNSOLICITEDADVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

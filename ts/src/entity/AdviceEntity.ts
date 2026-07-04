@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Advice,
+  AdviceLoadMatch,
+  AdviceListMatch,
+} from '../UnsolicitedAdviceTypes'
 
 // TODO: needs Entity superclass
-class AdviceEntity extends UnsolicitedAdviceEntityBase {
+class AdviceEntity extends UnsolicitedAdviceEntityBase<Advice> {
 
   constructor(client: UnsolicitedAdviceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class AdviceEntity extends UnsolicitedAdviceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AdviceLoadMatch, ctrl?: Control): Promise<Advice> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class AdviceEntity extends UnsolicitedAdviceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Advice> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: AdviceListMatch, ctrl?: Control): Promise<Advice[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class AdviceEntity extends UnsolicitedAdviceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Advice[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

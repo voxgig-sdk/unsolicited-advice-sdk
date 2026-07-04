@@ -50,16 +50,14 @@ class TestAdviceEntity:
         advice_ref01_ent = client.Advice(None)
         advice_ref01_match = {}
 
-        advice_ref01_list_result, err = advice_ref01_ent.list(advice_ref01_match, None)
-        assert err is None
+        advice_ref01_list_result = advice_ref01_ent.list(advice_ref01_match, None)
         assert isinstance(advice_ref01_list_result, list)
 
         # LOAD
         advice_ref01_match_dt0 = {
             "id": advice_ref01_data["id"],
         }
-        advice_ref01_data_dt0_loaded, err = advice_ref01_ent.load(advice_ref01_match_dt0, None)
-        assert err is None
+        advice_ref01_data_dt0_loaded = advice_ref01_ent.load(advice_ref01_match_dt0, None)
         advice_ref01_data_dt0_load_result = helpers.to_map(advice_ref01_data_dt0_loaded)
         assert advice_ref01_data_dt0_load_result is not None
         assert advice_ref01_data_dt0_load_result["id"] == advice_ref01_data["id"]
@@ -102,7 +100,6 @@ def _advice_basic_setup(extra):
         "UNSOLICITEDADVICE_TEST_ADVICE_ENTID": idmap,
         "UNSOLICITEDADVICE_TEST_LIVE": "FALSE",
         "UNSOLICITEDADVICE_TEST_EXPLAIN": "FALSE",
-        "UNSOLICITEDADVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _advice_basic_setup(extra):
     if env.get("UNSOLICITEDADVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UNSOLICITEDADVICE_APIKEY"),
             },
             extra or {},
         ])

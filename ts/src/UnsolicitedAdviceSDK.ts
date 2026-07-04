@@ -2,6 +2,8 @@
 
 import { AdviceEntity } from './entity/AdviceEntity'
 
+export type * from './UnsolicitedAdviceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class UnsolicitedAdviceSDK {
 
 
 
+  _advice?: AdviceEntity
+
+  // Idiomatic facade: `client.advice.list()` / `client.advice.load({ id })`.
+  get advice(): AdviceEntity {
+    return (this._advice ??= new AdviceEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.advice` instead. */
   Advice(data?: any) {
     const self = this
     return new AdviceEntity(self,data)
