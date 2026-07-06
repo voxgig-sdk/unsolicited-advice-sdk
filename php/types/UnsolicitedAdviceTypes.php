@@ -26,7 +26,7 @@ class AdviceLoadMatch
     public int $id;
 }
 
-/** Match filter for Advice#list (any subset of Advice fields). */
+/** Request payload for Advice#list. */
 class AdviceListMatch
 {
     public ?string $advice = null;

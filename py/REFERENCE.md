@@ -8,7 +8,7 @@ Complete API reference for the UnsolicitedAdvice Python SDK.
 ### Constructor
 
 ```python
-from unsolicited-advice_sdk import UnsolicitedAdviceSDK
+from unsolicitedadvice_sdk import UnsolicitedAdviceSDK
 
 client = UnsolicitedAdviceSDK(options)
 ```
@@ -87,18 +87,18 @@ advice = client.Advice()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `source` | ``$STRING`` | Yes |  |
+| `advice` | `str` | Yes |  |
+| `id` | `int` | Yes |  |
+| `source` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Advice().list({})
+results = client.Advice().list()
 for advice in results:
     print(advice)
 ```

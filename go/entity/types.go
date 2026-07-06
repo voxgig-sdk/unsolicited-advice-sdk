@@ -20,8 +20,7 @@ type AdviceLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// AdviceListMatch mirrors the advice fields as an all-optional match
-// filter (Go analog of Partial<Advice>).
+// AdviceListMatch is the typed request payload for Advice.ListTyped.
 type AdviceListMatch struct {
 	Advice *string `json:"advice,omitempty"`
 	Id *int `json:"id,omitempty"`

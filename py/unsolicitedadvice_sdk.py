@@ -221,7 +221,7 @@ class UnsolicitedAdviceSDK:
 
 
     def Advice(self, data=None) -> "AdviceEntity":
-        """Entity factory: client.Advice().list({}) / client.Advice().load({"id": ...})."""
+        """Entity factory: client.Advice().list() / client.Advice().load({"id": ...})."""
         from entity.advice_entity import AdviceEntity
         return AdviceEntity(self, data)
 

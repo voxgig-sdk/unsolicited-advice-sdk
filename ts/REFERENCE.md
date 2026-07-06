@@ -116,9 +116,9 @@ const advice = client.Advice()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `source` | ``$STRING`` | Yes |  |
+| `advice` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `source` | `string` | Yes |  |
 
 ### Operations
 
@@ -135,7 +135,7 @@ const results = await client.Advice().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Advice().load({ id: 'advice_id' })
+const result = await client.Advice().load({ id: 1 })
 ```
 
 ### Common Methods

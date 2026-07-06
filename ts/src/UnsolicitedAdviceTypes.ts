@@ -15,5 +15,9 @@ export interface AdviceLoadMatch {
   id: number
 }
 
-export type AdviceListMatch = Partial<Advice>
+export interface AdviceListMatch {
+  advice?: string
+  id?: number
+  source?: string
+}
 

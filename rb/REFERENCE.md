@@ -8,7 +8,7 @@ Complete API reference for the UnsolicitedAdvice Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'unsolicited-advice_sdk'
+require_relative 'UnsolicitedAdvice_sdk'
 
 client = UnsolicitedAdviceSDK.new(options)
 ```
@@ -93,18 +93,18 @@ advice = client.Advice
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `source` | ``$STRING`` | Yes |  |
+| `advice` | `String` | Yes |  |
+| `id` | `Integer` | Yes |  |
+| `source` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Advice.list(nil)
+results = client.Advice.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

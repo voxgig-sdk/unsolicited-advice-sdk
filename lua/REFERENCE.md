@@ -90,9 +90,9 @@ local advice = client:Advice(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | ``$STRING`` | Yes |  |
-| `id` | ``$INTEGER`` | Yes |  |
-| `source` | ``$STRING`` | Yes |  |
+| `advice` | `string` | Yes |  |
+| `id` | `number` | Yes |  |
+| `source` | `string` | Yes |  |
 
 ### Operations
 

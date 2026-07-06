@@ -34,7 +34,7 @@ AdviceLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Advice#list (any subset of Advice fields).
+# Request payload for Advice#list.
 #
 # @!attribute [rw] advice
 #   @return [String, nil]

@@ -15,6 +15,9 @@
 ---@field id number
 
 ---@class AdviceListMatch
+---@field advice? string
+---@field id? number
+---@field source? string
 
 local M = {}
 
