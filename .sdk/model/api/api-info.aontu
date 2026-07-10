@@ -15,9 +15,9 @@ main: {
           url: "https://kk-advice.koyeb.app"
         }
       ]
+      summary: "This API provides access to a collection of unsolicited advice from Kevin Kelly."
       title: "Unsolicited Advice API"
       version: "1.0.0"
+      website: "https://kk-advice.koyeb.app"
     }
   }
-}
-

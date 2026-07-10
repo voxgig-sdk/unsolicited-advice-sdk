@@ -108,7 +108,7 @@ for advice in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Advice().load({"id": "advice_id"})
+result = client.Advice().load({"id": 1})
 ```
 
 ### Common Methods

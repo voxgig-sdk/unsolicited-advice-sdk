@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 advice := client.Advice(nil)
+fmt.Println(advice.GetName()) // "advice"
 ```
 
 ### Fields
@@ -109,6 +110,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Advice(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -116,7 +121,11 @@ results, err := client.Advice(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Advice(nil).Load(map[string]any{"id": "advice_id"}, nil)
+result, err := client.Advice(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

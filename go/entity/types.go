@@ -17,7 +17,7 @@ type Advice struct {
 
 // AdviceLoadMatch is the typed request payload for Advice.LoadTyped.
 type AdviceLoadMatch struct {
-	Id int `json:"id"`
+	Id *int `json:"id,omitempty"`
 }
 
 // AdviceListMatch is the typed request payload for Advice.ListTyped.

@@ -23,7 +23,7 @@ class Advice
 /** Request payload for Advice#load. */
 class AdviceLoadMatch
 {
-    public int $id;
+    public ?int $id = null;
 }
 
 /** Request payload for Advice#list. */

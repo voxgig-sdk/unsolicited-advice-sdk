@@ -12,7 +12,7 @@
 ---@field source string
 
 ---@class AdviceLoadMatch
----@field id number
+---@field id? number
 
 ---@class AdviceListMatch
 ---@field advice? string

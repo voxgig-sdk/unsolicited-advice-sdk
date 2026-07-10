@@ -22,7 +22,7 @@ class Advice(TypedDict):
     source: str
 
 
-class AdviceLoadMatch(TypedDict):
+class AdviceLoadMatch(TypedDict, total=False):
     id: int
 
 

@@ -50,7 +50,7 @@ end
 ### 3. Load an advice
 
 ```lua
-local advice, err = client:Advice():load({ id = "example_id" })
+local advice, err = client:Advice():load({ id = 1 })
 if err then error(err) end
 print(advice)
 ```
@@ -276,7 +276,7 @@ Create an instance: `local advice = client:Advice(nil)`
 #### Example: Load
 
 ```lua
-local advice, err = client:Advice():load({ id = "advice_id" })
+local advice, err = client:Advice():load({ id = 1 })
 ```
 
 #### Example: List
