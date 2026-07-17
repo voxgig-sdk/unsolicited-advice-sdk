@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- UnsolicitedAdvice SDK exists test
 
 local sdk = require("unsolicited-advice_sdk")
 
