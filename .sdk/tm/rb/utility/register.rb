@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ UnsolicitedAdviceUtility.registrar = ->(u) {
   u.prepare_params = UnsolicitedAdviceUtilities::PrepareParams
   u.prepare_path = UnsolicitedAdviceUtilities::PreparePath
   u.prepare_query = UnsolicitedAdviceUtilities::PrepareQuery
+  u.graphql_body = UnsolicitedAdviceUtilities::GraphqlBody
+  u.graphql_errors = UnsolicitedAdviceUtilities::GraphqlErrors
   u.result_basic = UnsolicitedAdviceUtilities::ResultBasic
   u.result_body = UnsolicitedAdviceUtilities::ResultBody
   u.result_headers = UnsolicitedAdviceUtilities::ResultHeaders

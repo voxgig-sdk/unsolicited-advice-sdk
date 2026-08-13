@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import UnsolicitedAdviceSDK
-from core.error import UnsolicitedAdviceError
-from core.result import UnsolicitedAdviceResult
-from core.response import UnsolicitedAdviceResponse
-from core.spec import UnsolicitedAdviceSpec
-from feature.base_feature import UnsolicitedAdviceBaseFeature
+from projectname_sdk.core.error import UnsolicitedAdviceError
+from projectname_sdk.core.result import UnsolicitedAdviceResult
+from projectname_sdk.core.response import UnsolicitedAdviceResponse
+from projectname_sdk.core.spec import UnsolicitedAdviceSpec
+from projectname_sdk.feature.base_feature import UnsolicitedAdviceBaseFeature
 
 
 def _client():

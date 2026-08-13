@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import UnsolicitedAdviceControl
-from core.error import UnsolicitedAdviceError
-from core.result import UnsolicitedAdviceResult
-from core.spec import UnsolicitedAdviceSpec
+from unsolicitedadvice_sdk.config import make_config
+from unsolicitedadvice_sdk.features import _make_feature
+from unsolicitedadvice_sdk.core.control import UnsolicitedAdviceControl
+from unsolicitedadvice_sdk.core.error import UnsolicitedAdviceError
+from unsolicitedadvice_sdk.core.result import UnsolicitedAdviceResult
+from unsolicitedadvice_sdk.core.spec import UnsolicitedAdviceSpec
 
 
 # True when this SDK was generated with the named feature.

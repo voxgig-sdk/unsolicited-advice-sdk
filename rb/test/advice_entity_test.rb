@@ -62,7 +62,7 @@ class AdviceEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set UNSOLICITEDADVICE_TEST_ADVICE_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set UNSOLICITED_ADVICE_TEST_ADVICE_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class AdviceEntityTest < Minitest::Test
       "id" => advice_ref01_data["id"],
     }
     advice_ref01_data_dt0_loaded = advice_ref01_ent.load(advice_ref01_match_dt0, nil)
-    advice_ref01_data_dt0_load_result = Helpers.to_map(advice_ref01_data_dt0_loaded)
+    advice_ref01_data_dt0_load_result = Helpers.to_map(advice_ref01_data_dt0_loaded.respond_to?(:data_get) ? advice_ref01_data_dt0_loaded.data_get : advice_ref01_data_dt0_loaded)
     assert !advice_ref01_data_dt0_load_result.nil?
     assert_equal advice_ref01_data_dt0_load_result["id"], advice_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def advice_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["UNSOLICITEDADVICE_TEST_ADVICE_ENTID"]
+  entid_env_raw = ENV["UNSOLICITED_ADVICE_TEST_ADVICE_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "UNSOLICITEDADVICE_TEST_ADVICE_ENTID" => idmap,
-    "UNSOLICITEDADVICE_TEST_LIVE" => "FALSE",
-    "UNSOLICITEDADVICE_TEST_EXPLAIN" => "FALSE",
+    "UNSOLICITED_ADVICE_TEST_ADVICE_ENTID" => idmap,
+    "UNSOLICITED_ADVICE_TEST_LIVE" => "FALSE",
+    "UNSOLICITED_ADVICE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["UNSOLICITEDADVICE_TEST_ADVICE_ENTID"])
+    env["UNSOLICITED_ADVICE_TEST_ADVICE_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
+  if env["UNSOLICITED_ADVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def advice_basic_setup(extra)
     client = UnsolicitedAdviceSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
+  live = env["UNSOLICITED_ADVICE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["UNSOLICITEDADVICE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["UNSOLICITED_ADVICE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

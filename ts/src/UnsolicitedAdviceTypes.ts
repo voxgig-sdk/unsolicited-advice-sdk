@@ -19,5 +19,11 @@ export interface AdviceListMatch {
   advice?: string
   id?: number
   source?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'all'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

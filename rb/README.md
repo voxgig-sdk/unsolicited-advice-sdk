@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Advice record (raises on error).
+  # load returns the ENTITY — call data_get for the Advice record (raises on error).
   advice = client.Advice.load({ "id" => 1 })
   puts advice
 rescue => err
@@ -134,7 +134,8 @@ client = UnsolicitedAdviceSDK.test({
   "entity" => { "advice" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 advice = client.Advice.list()
 puts advice
 ```
@@ -287,7 +288,7 @@ Create an instance: `advice = client.Advice`
 #### Example: Load
 
 ```ruby
-# load returns the bare Advice record (raises on error).
+# load returns the ENTITY — call data_get for the Advice record (raises on error).
 advice = client.Advice.load({ "id" => 1 })
 ```
 

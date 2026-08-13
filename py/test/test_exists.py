@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# UnsolicitedAdvice SDK exists test
 
 import pytest
 from unsolicitedadvice_sdk import UnsolicitedAdviceSDK

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from unsolicitedadvice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from unsolicitedadvice_sdk import UnsolicitedAdviceSDK
-from core import helpers
+from unsolicitedadvice_sdk.core import helpers
 from test import runner
 
 
@@ -102,11 +102,11 @@ def _advice_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "UNSOLICITEDADVICE_TEST_ADVICE_ENTID": {},
-        "UNSOLICITEDADVICE_TEST_LIVE": "FALSE",
+        "UNSOLICITED_ADVICE_TEST_ADVICE_ENTID": {},
+        "UNSOLICITED_ADVICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("UNSOLICITEDADVICE_TEST_LIVE") == "TRUE"
+    live = env.get("UNSOLICITED_ADVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

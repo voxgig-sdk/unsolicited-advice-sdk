@@ -119,11 +119,11 @@ function advice_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "UNSOLICITEDADVICE_TEST_ADVICE_ENTID" => [],
-        "UNSOLICITEDADVICE_TEST_LIVE" => "FALSE",
+        "UNSOLICITED_ADVICE_TEST_ADVICE_ENTID" => [],
+        "UNSOLICITED_ADVICE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["UNSOLICITEDADVICE_TEST_LIVE"] === "TRUE";
+    $live = $env["UNSOLICITED_ADVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

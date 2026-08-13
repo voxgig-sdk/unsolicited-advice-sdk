@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = UnsolicitedAdviceSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = UnsolicitedAdviceSDK.test({
+  entity: {
+    advice: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const advices = await client.Advice().list()
-// advices is an array of bare Advice records populated with mock data
+// advices is an array of Advice entities, populated with mock data
+// — call advices[0].data() for the record itself
 console.log(advices)
 ```
 
@@ -110,7 +119,7 @@ import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice'
 
 const client = new UnsolicitedAdviceSDK()
 
-// List all advices (returns Advice[])
+// List all advices (returns AdviceEntity[] — .data() for the record)
 const advices = await client.Advice().list()
 for (const advice of advices) {
   console.log(advice)
@@ -191,7 +200,7 @@ $client = new UnsolicitedAdviceSDK();
 $advices = $client->Advice()->list();
 print_r($advices);
 
-// Load a specific advice (returns the bare record; throws on error)
+// Load a specific advice (returns the ENTITY; call data_get() for the record; throws on error)
 $advice = $client->Advice()->load(["id" => 1]);
 print_r($advice);
 ```
@@ -222,7 +231,7 @@ client = UnsolicitedAdviceSDK.new
 advices = client.Advice.list
 puts advices
 
-# Load a specific advice (returns the bare record; raises on error)
+# Load a specific advice (returns the ENTITY; call data_get for the record)
 advice = client.Advice.load({ "id" => 1 })
 puts advice
 ```
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://kk-advice.koyeb.app/api](https://kk-advice.koyeb.app/api)
 

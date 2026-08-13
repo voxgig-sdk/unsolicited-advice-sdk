@@ -61,6 +61,7 @@ class UnsolicitedAdviceConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice/all',
                   'parts' => [
@@ -100,6 +101,7 @@ class UnsolicitedAdviceConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice/{id}',
                   'parts' => [
@@ -121,6 +123,7 @@ class UnsolicitedAdviceConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice',
                   'parts' => [

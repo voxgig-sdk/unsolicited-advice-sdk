@@ -35,7 +35,9 @@ const client = new UnsolicitedAdviceSDK()
 
 ### 2. List advice records
 
-`list()` resolves to an array of Advice objects — iterate it directly:
+`list()` resolves to an array of Advice ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const advices = await client.Advice().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = UnsolicitedAdviceSDK.test()
 
 const advice = await client.Advice().list()
-// advice is a bare entity populated with mock response data
+// advice is the entity, populated with mock response data
+// — call advice.data() for the record itself
 console.log(advice)
 ```
 

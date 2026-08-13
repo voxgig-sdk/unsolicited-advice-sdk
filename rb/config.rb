@@ -56,6 +56,7 @@ module UnsolicitedAdviceConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/advice/all",
                   "parts" => [
@@ -95,6 +96,7 @@ module UnsolicitedAdviceConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/advice/{id}",
                   "parts" => [
@@ -116,6 +118,7 @@ module UnsolicitedAdviceConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/advice",
                   "parts" => [

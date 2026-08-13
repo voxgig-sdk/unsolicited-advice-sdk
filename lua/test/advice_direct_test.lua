@@ -113,11 +113,11 @@ function advice_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["UNSOLICITEDADVICE_TEST_ADVICE_ENTID"] = {},
-    ["UNSOLICITEDADVICE_TEST_LIVE"] = "FALSE",
+    ["UNSOLICITED_ADVICE_TEST_ADVICE_ENTID"] = {},
+    ["UNSOLICITED_ADVICE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["UNSOLICITEDADVICE_TEST_LIVE"] == "TRUE"
+  local live = env["UNSOLICITED_ADVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

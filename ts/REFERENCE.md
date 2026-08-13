@@ -120,6 +120,26 @@ const advice = client.Advice()
 | `id` | `number` | Yes |  |
 | `source` | `string` | Yes |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `all` | `/api/advice/all` | `client.Advice().list({ $action: 'all', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Advice record — check the API definition for its shape.
+
+```ts
+const result = await client.Advice().list({
+  $action: 'all',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`

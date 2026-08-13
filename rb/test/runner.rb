@@ -23,8 +23,8 @@ module UnsolicitedAdviceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("UNSOLICITEDADVICE_TEST_LIVE")
-    override = getenv("UNSOLICITEDADVICE_TEST_OVERRIDE")
+    live = getenv("UNSOLICITED_ADVICE_TEST_LIVE")
+    override = getenv("UNSOLICITED_ADVICE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module UnsolicitedAdviceTestRunner
       end
     end
 
-    explain = getenv("UNSOLICITEDADVICE_TEST_EXPLAIN")
-    m["UNSOLICITEDADVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("UNSOLICITED_ADVICE_TEST_EXPLAIN")
+    m["UNSOLICITED_ADVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

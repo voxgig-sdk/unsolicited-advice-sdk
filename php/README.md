@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Advice record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Advice record (throws on error).
     $advice = $client->Advice()->load(["id" => 1]);
     print_r($advice);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = UnsolicitedAdviceSDK::test([
     "entity" => ["advice" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $advice = $client->Advice()->list();
 print_r($advice);
 ```
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -297,7 +298,7 @@ Create an instance: `$advice = $client->Advice();`
 #### Example: Load
 
 ```php
-// load() returns the bare Advice record (throws on error).
+// load() returns the ENTITY — call data_get() for the Advice record (throws on error).
 $advice = $client->Advice()->load(["id" => 1]);
 ```
 

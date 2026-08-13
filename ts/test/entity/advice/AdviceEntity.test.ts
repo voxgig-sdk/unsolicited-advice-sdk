@@ -26,8 +26,8 @@ import {
 describe('AdviceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when UNSOLICITEDADVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('UNSOLICITEDADVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when UNSOLICITED_ADVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('UNSOLICITED_ADVICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = UnsolicitedAdviceSDK.test()
@@ -63,13 +63,13 @@ describe('AdviceEntity', async () => {
     const advice_ref01_ent = client.Advice()
     const advice_ref01_match: any = {}
 
-    const advice_ref01_list = await advice_ref01_ent.list(advice_ref01_match)
+    const advice_ref01_list = (await advice_ref01_ent.list(advice_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const advice_ref01_match_dt0: any = {}
     advice_ref01_match_dt0.id = advice_ref01_data.id
-    const advice_ref01_data_dt0 = await advice_ref01_ent.load(advice_ref01_match_dt0)
+    const advice_ref01_data_dt0 = (await advice_ref01_ent.load(advice_ref01_match_dt0)).data()
     assert(advice_ref01_data_dt0.id === advice_ref01_data.id)
 
 
