@@ -40,7 +40,7 @@ class UnsolicitedAdviceSDK
         $utility = new UnsolicitedAdviceUtility();
         $this->_utility = $utility;
 
-        $config = UnsolicitedAdviceConfig::make_config();
+        $config = UnsolicitedAdviceConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

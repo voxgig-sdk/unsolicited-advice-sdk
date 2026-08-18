@@ -23,6 +23,7 @@ build = {
   modules = {
     ["unsolicited-advice_sdk"] = "unsolicited-advice_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

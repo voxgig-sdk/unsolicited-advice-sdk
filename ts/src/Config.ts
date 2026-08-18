@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://kk-advice.koyeb.app',
+    base: "https://kk-advice.koyeb.app",
 
     headers: {
       "content-type": "application/json"
@@ -55,25 +55,19 @@ class Config {
     "advice": {
       "fields": [
         {
-          "active": true,
           "name": "advice",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "source",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         }
       ],
       "name": "advice",
@@ -83,7 +77,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -99,29 +92,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 7,
                     "kind": "param",
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -141,11 +129,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -158,11 +144,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

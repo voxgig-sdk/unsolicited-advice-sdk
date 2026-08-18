@@ -28,7 +28,7 @@ class UnsolicitedAdviceSDK
     utility = UnsolicitedAdviceUtility.new
     @_utility = utility
 
-    config = UnsolicitedAdviceConfig.make_config
+    config = UnsolicitedAdviceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
