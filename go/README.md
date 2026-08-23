@@ -6,7 +6,7 @@ The Golang SDK for the UnsolicitedAdvice API — an entity-oriented client using
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Advice(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -269,9 +269,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"advice"` |  |
-| `"id"` |  |
-| `"source"` |  |
+| `"advice"` | The unsolicited advice text from Kevin Kelly |
+| `"id"` | The unique identifier for the advice |
+| `"source"` | The URL source of the advice |
 
 Operations: List, Load.
 
@@ -297,9 +297,9 @@ Create an instance: `advice := client.Advice(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `advice` | `string` |  |
-| `id` | `int` |  |
-| `source` | `string` |  |
+| `advice` | `string` | The unsolicited advice text from Kevin Kelly |
+| `id` | `int` | The unique identifier for the advice |
+| `source` | `string` | The URL source of the advice |
 
 #### Example: Load
 

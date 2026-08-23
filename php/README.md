@@ -263,9 +263,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `advice` |  |
-| `id` |  |
-| `source` |  |
+| `advice` | The unsolicited advice text from Kevin Kelly |
+| `id` | The unique identifier for the advice |
+| `source` | The URL source of the advice |
 
 Operations: List, Load.
 
@@ -291,9 +291,9 @@ Create an instance: `$advice = $client->Advice();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `advice` | `string` |  |
-| `id` | `int` |  |
-| `source` | `string` |  |
+| `advice` | `string` | The unsolicited advice text from Kevin Kelly |
+| `id` | `int` | The unique identifier for the advice |
+| `source` | `string` | The URL source of the advice |
 
 #### Example: Load
 

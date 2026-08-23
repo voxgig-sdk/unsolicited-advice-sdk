@@ -253,9 +253,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `advice` |  |
-| `id` |  |
-| `source` |  |
+| `advice` | The unsolicited advice text from Kevin Kelly |
+| `id` | The unique identifier for the advice |
+| `source` | The URL source of the advice |
 
 Operations: List, Load.
 
@@ -281,9 +281,9 @@ Create an instance: `advice = client.Advice`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `advice` | `String` |  |
-| `id` | `Integer` |  |
-| `source` | `String` |  |
+| `advice` | `String` | The unsolicited advice text from Kevin Kelly |
+| `id` | `Integer` | The unique identifier for the advice |
+| `source` | `String` | The URL source of the advice |
 
 #### Example: Load
 

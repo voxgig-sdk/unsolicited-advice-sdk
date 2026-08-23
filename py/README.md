@@ -256,9 +256,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `advice` |  |
-| `id` |  |
-| `source` |  |
+| `advice` | The unsolicited advice text from Kevin Kelly |
+| `id` | The unique identifier for the advice |
+| `source` | The URL source of the advice |
 
 Operations: List, Load.
 
@@ -284,9 +284,9 @@ Create an instance: `advice = client.Advice()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `advice` | `str` |  |
-| `id` | `int` |  |
-| `source` | `str` |  |
+| `advice` | `str` | The unsolicited advice text from Kevin Kelly |
+| `id` | `int` | The unique identifier for the advice |
+| `source` | `str` | The URL source of the advice |
 
 #### Example: Load
 

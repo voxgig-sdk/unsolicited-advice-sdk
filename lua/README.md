@@ -241,9 +241,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `advice` |  |
-| `id` |  |
-| `source` |  |
+| `advice` | The unsolicited advice text from Kevin Kelly |
+| `id` | The unique identifier for the advice |
+| `source` | The URL source of the advice |
 
 Operations: List, Load.
 
@@ -269,9 +269,9 @@ Create an instance: `local advice = client:Advice(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `advice` | `string` |  |
-| `id` | `number` |  |
-| `source` | `string` |  |
+| `advice` | `string` | The unsolicited advice text from Kevin Kelly |
+| `id` | `number` | The unique identifier for the advice |
+| `source` | `string` | The URL source of the advice |
 
 #### Example: Load
 

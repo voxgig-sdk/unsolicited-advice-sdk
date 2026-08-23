@@ -87,9 +87,9 @@ advice = client.Advice()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | `str` | Yes |  |
-| `id` | `int` | Yes |  |
-| `source` | `str` | Yes |  |
+| `advice` | `str` | Yes | The unsolicited advice text from Kevin Kelly |
+| `id` | `int` | Yes | The unique identifier for the advice |
+| `source` | `str` | Yes | The URL source of the advice |
 
 ### Operations
 

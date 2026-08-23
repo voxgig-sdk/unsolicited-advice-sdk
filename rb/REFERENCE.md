@@ -93,9 +93,9 @@ advice = client.Advice
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | `String` | Yes |  |
-| `id` | `Integer` | Yes |  |
-| `source` | `String` | Yes |  |
+| `advice` | `String` | Yes | The unsolicited advice text from Kevin Kelly |
+| `id` | `Integer` | Yes | The unique identifier for the advice |
+| `source` | `String` | Yes | The URL source of the advice |
 
 ### Operations
 

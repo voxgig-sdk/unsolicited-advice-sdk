@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'UnsolicitedAdvice',
+        slug: "unsolicited-advice",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -57,16 +68,19 @@ class Config {
         {
           "name": "advice",
           "req": true,
+          "short": "The unsolicited advice text from Kevin Kelly",
           "type": "`$STRING`"
         },
         {
           "name": "id",
           "req": true,
+          "short": "The unique identifier for the advice",
           "type": "`$INTEGER`"
         },
         {
           "name": "source",
           "req": true,
+          "short": "The URL source of the advice",
           "type": "`$STRING`"
         }
       ],

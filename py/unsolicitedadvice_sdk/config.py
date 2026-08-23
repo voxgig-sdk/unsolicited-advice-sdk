@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "UnsolicitedAdvice",
+            "slug": "unsolicited-advice",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,16 +54,19 @@ def make_config():
           {
             "name": "advice",
             "req": True,
+            "short": "The unsolicited advice text from Kevin Kelly",
             "type": "`$STRING`",
           },
           {
             "name": "id",
             "req": True,
+            "short": "The unique identifier for the advice",
             "type": "`$INTEGER`",
           },
           {
             "name": "source",
             "req": True,
+            "short": "The URL source of the advice",
             "type": "`$STRING`",
           },
         ],

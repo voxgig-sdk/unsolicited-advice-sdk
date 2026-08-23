@@ -36,18 +36,21 @@
               "active": true,
               "name": "advice",
               "req": true,
+              "short": "The unsolicited advice text from Kevin Kelly",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "The unique identifier for the advice",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "source",
               "req": true,
+              "short": "The URL source of the advice",
               "type": "`$STRING`"
             }
           ],

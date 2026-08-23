@@ -92,9 +92,9 @@ $advice = $client->Advice();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `advice` | `string` | Yes |  |
-| `id` | `int` | Yes |  |
-| `source` | `string` | Yes |  |
+| `advice` | `string` | Yes | The unsolicited advice text from Kevin Kelly |
+| `id` | `int` | Yes | The unique identifier for the advice |
+| `source` | `string` | Yes | The URL source of the advice |
 
 ### Operations
 

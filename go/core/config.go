@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "UnsolicitedAdvice",
+			"slug": "unsolicited-advice",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,16 +37,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "advice",
 						"req": true,
+						"short": "The unsolicited advice text from Kevin Kelly",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "The unique identifier for the advice",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "source",
 						"req": true,
+						"short": "The URL source of the advice",
 						"type": "`$STRING`",
 					},
 				},
