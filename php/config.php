@@ -42,6 +42,7 @@ class UnsolicitedAdviceConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
