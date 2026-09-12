@@ -70,11 +70,16 @@ class UnsolicitedAdviceConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'source',
               'req' => true,
               'short' => 'The URL source of the advice',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'advice',
           'op' => [
@@ -87,10 +92,16 @@ class UnsolicitedAdviceConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice/all',
-                  'parts' => [
-                    'api',
-                    'advice',
-                    'all',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'advice',
+                    ],
+                    [
+                      'lit' => 'all',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'all',
@@ -98,6 +109,11 @@ class UnsolicitedAdviceConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'advice',
+                    'all',
                   ],
                 ],
               ],
@@ -122,10 +138,16 @@ class UnsolicitedAdviceConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice/{id}',
-                  'parts' => [
-                    'api',
-                    'advice',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'advice',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -136,20 +158,33 @@ class UnsolicitedAdviceConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'api',
+                    'advice',
+                    '{id}',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/advice',
-                  'parts' => [
-                    'api',
-                    'advice',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'advice',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'advice',
                   ],
                 ],
               ],

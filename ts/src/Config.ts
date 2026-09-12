@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -79,12 +90,17 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "source",
           "req": true,
           "short": "The URL source of the advice",
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "advice",
       "op": {
         "list": {
@@ -96,10 +112,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/advice/all",
-              "parts": [
-                "api",
-                "advice",
-                "all"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "advice"
+                },
+                {
+                  "lit": "all"
+                }
               ],
               "select": {
                 "$action": "all"
@@ -107,7 +129,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "advice",
+                "all"
+              ]
             }
           ]
         },
@@ -131,10 +158,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/advice/{id}",
-              "parts": [
-                "api",
-                "advice",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "advice"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -144,22 +177,35 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "advice",
+                "{id}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/advice",
-              "parts": [
-                "api",
-                "advice"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "advice"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "advice"
+              ]
             }
           ]
         }
@@ -175,6 +221,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

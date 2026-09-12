@@ -18,6 +18,7 @@ main: kit: entity: advice: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "source"
       req: true
       short: "The URL source of the advice"
@@ -38,10 +39,16 @@ main: kit: entity: advice: {
         {
           method: "GET"
           orig: "/api/advice/all"
-          parts: [
-            "api"
-            "advice"
-            "all"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "advice"
+            }
+            {
+              lit: "all"
+            }
           ]
           select: {
             "$action": "all"
@@ -71,10 +78,16 @@ main: kit: entity: advice: {
           }
           method: "GET"
           orig: "/api/advice/{id}"
-          parts: [
-            "api"
-            "advice"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "advice"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -89,9 +102,13 @@ main: kit: entity: advice: {
         {
           method: "GET"
           orig: "/api/advice"
-          parts: [
-            "api"
-            "advice"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "advice"
+            }
           ]
           transform: {
             req: "`reqdata`"
