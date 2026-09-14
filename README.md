@@ -105,7 +105,7 @@ local results, err = client:Advice():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unsolicited-advice-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
 | Python | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
 | PHP | `voxgig-sdk/unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/unsolicited-advice-sdk/go` | `go get github.com/voxgig-sdk/unsolicited-advice-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Advice():list()
 ### TypeScript
 
 ```ts
-import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice'
+import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice-sdk'
 
 const client = new UnsolicitedAdviceSDK()
 

@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice'
+import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice-sdk'
 
 const client = new UnsolicitedAdviceSDK()
 ```
@@ -429,7 +429,7 @@ unsolicited-advice/
 Import the SDK from the package root:
 
 ```ts
-import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice'
+import { UnsolicitedAdviceSDK } from '@voxgig-sdk/unsolicited-advice-sdk'
 ```
 
 ### Entity state
