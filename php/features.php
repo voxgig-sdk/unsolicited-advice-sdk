@@ -4,7 +4,10 @@ declare(strict_types=1);
 // UnsolicitedAdvice SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class UnsolicitedAdviceFeatures
@@ -14,8 +17,14 @@ class UnsolicitedAdviceFeatures
         switch ($name) {
             case "base":
                 return new UnsolicitedAdviceBaseFeature();
+            case "ratelimit":
+                return new UnsolicitedAdviceRatelimitFeature();
+            case "retry":
+                return new UnsolicitedAdviceRetryFeature();
             case "test":
                 return new UnsolicitedAdviceTestFeature();
+            case "timeout":
+                return new UnsolicitedAdviceTimeoutFeature();
             default:
                 return new UnsolicitedAdviceBaseFeature();
         }
@@ -31,7 +40,10 @@ class UnsolicitedAdviceFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

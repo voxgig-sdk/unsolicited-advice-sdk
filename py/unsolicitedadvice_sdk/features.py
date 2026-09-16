@@ -1,12 +1,18 @@
 # UnsolicitedAdvice SDK feature factory
 
 from unsolicitedadvice_sdk.feature.base_feature import UnsolicitedAdviceBaseFeature
+from unsolicitedadvice_sdk.feature.ratelimit_feature import UnsolicitedAdviceRatelimitFeature
+from unsolicitedadvice_sdk.feature.retry_feature import UnsolicitedAdviceRetryFeature
 from unsolicitedadvice_sdk.feature.test_feature import UnsolicitedAdviceTestFeature
+from unsolicitedadvice_sdk.feature.timeout_feature import UnsolicitedAdviceTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: UnsolicitedAdviceBaseFeature(),
+    "ratelimit": lambda: UnsolicitedAdviceRatelimitFeature(),
+    "retry": lambda: UnsolicitedAdviceRetryFeature(),
     "test": lambda: UnsolicitedAdviceTestFeature(),
+    "timeout": lambda: UnsolicitedAdviceTimeoutFeature(),
 }
 
 
