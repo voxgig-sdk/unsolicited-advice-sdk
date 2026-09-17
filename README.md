@@ -105,12 +105,12 @@ local results, err = client:Advice():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unsolicited-advice-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
-| Python | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
-| PHP | `voxgig-sdk/unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unsolicited-advice-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/tags) |
+| Python | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/tags) |
+| PHP | `voxgig-sdk/unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/unsolicited-advice-sdk/go` | `go get github.com/voxgig-sdk/unsolicited-advice-sdk/go@latest` |
-| Ruby | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
-| Lua | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/releases) |
+| Ruby | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/tags) |
+| Lua | `voxgig-sdk-unsolicited-advice` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unsolicited-advice-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/unsolicited-advice-sdk/go-cli` | `go install github.com/voxgig-sdk/unsolicited-advice-sdk/go-cli/cmd/unsolicited-advice@latest` |
 | Go MCP server | `github.com/voxgig-sdk/unsolicited-advice-sdk/go-mcp` | `go get github.com/voxgig-sdk/unsolicited-advice-sdk/go-mcp@latest` |
 
